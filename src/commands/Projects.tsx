@@ -22,13 +22,13 @@ const projects: Project[] = [
     website: "https://ankit70g.pythonanywhere.com/",
     github: "https://github.com/ankit70g/HealthCard",
   },
-  {
-    name: "Ankit-Portfolio",
-    type: "Web",
-    description: "The E-Health Card System is a web-based hospital management solution aimed at improving efficiency, accessibility, and accountability in healthcare services. It integrates patient data, doctor prescriptions, medical records, hospital details, and pharmacy information into a secure, centralized system.",
-    website: "https://ankit70g.pythonanywhere.com/",
-    github: "https://github.com/ankit70g/HealthCard",
-  },
+  // {
+  //   name: "Ankit",
+  //   type: "Web",
+  //   description: "The E-Health Card System is a web-based hospital management solution aimed at improving efficiency, accessibility, and accountability in healthcare services. It integrates patient data, doctor prescriptions, medical records, hospital details, and pharmacy information into a secure, centralized system.",
+  //   website: "https://ankit70g.pythonanywhere.com/",
+  //   github: "https://github.com/ankit70g/HealthCard",
+  // },
   {
     name: "AI Coding Agent with Gemini",
     type: "Python & AI",
