@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-const BLOG_ID = import.meta.env.VITE_BLOG_ID; // Access from .env
-const API_KEY = import.meta.env.VITE_API_KEY; // Access from .env
+const BLOG_ID = import.meta.env.VITE_BLOGGER_ID;
+const API_KEY = import.meta.env.VITE_BLOG_API_KEY;
 
 const Blog = () => {
     const [posts, setPosts] = useState<any[]>([]);
