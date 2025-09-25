@@ -11,8 +11,10 @@ const Help = () => (
       <li>{'>'} theme - Change the terminal theme (try: theme list, theme [name])</li>
       <li>{'>'} clear - Clear the terminal</li>
       <li>{'>'} help - Show this help message</li>
-      <li>{'>'} gen - Generate content based on prompt (try: gen [prompt])</li>
-      <li>{'>'} imagine - Generate an image based on prompt (try: imagine [prompt])</li>
+      <li>{'>'} quote -  Get a random quote for inspiration</li>
+      <li>{'>'} blog - Read my latest thoughts and articles</li>
+      {/* <li>{'>'} gen - Generate content based on prompt (try: gen [prompt])</li>
+      <li>{'>'} imagine - Generate an image based on prompt (try: imagine [prompt])</li> */}
     </ul>
   </div>
 );

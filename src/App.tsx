@@ -9,6 +9,8 @@ import Loading from './Loading';
 import Gen from './commands/Gen';
 import Imagine from './commands/Imagine';
 import { themes } from './themes';
+import Blog from './commands/Blog';
+import Quote from './commands/Quote';
 
 
 type Command = {
@@ -60,6 +62,8 @@ function App() {
     skills: <Skills />,
     projects: <Projects currentTheme={currentTheme} />,
     contact: <Contact />,
+    quote: <Quote />,
+    blog: <Blog />,
     gen: "Usage: gen [prompt]",
     imagine: "Usage: imagine [prompt]",
   };
