@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-const BLOG_ID = "7264237435288083204"; // your Blogger blog ID
-const API_KEY = "AIzaSyAX-NMomRRbocPpxQDMtoC-2gnLJRH9YHs"; // your Google API key
+const BLOG_ID = import.meta.env.VITE_BLOG_ID; // Access from .env
+const API_KEY = import.meta.env.VITE_API_KEY; // Access from .env
 
 const Blog = () => {
     const [posts, setPosts] = useState<any[]>([]);
