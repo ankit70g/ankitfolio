@@ -8,9 +8,11 @@ import Contact from './commands/Contact';
 import Loading from './Loading';
 import Gen from './commands/Gen';
 import Imagine from './commands/Imagine';
+// import Games from './commands/Games'; // Temporarily commented out due to missing file
 import { themes } from './themes';
 import Blog from './commands/Blog';
 import Quote from './commands/Quote';
+import Games from './commands/Games';
 
 
 type Command = {
@@ -29,15 +31,15 @@ type Theme = {
 
 function App() {
   const [input, setInput] = useState('');
-  // const [promt, setPromt] = useState('');
   const [history, setHistory] = useState<Command[]>([]);
   const [currentPath] = useState('ankitmanojg@gmail.com');
   const [currentTheme, setCurrentTheme] = useState<Theme>(themes.default);
   const [loading, setLoading] = useState(true);
+  const [gameCommandHandler, setGameCommandHandler] = useState<((input: string) => void) | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   const imageOverlayStyle = {
-    filter: currentTheme.accent // Adjusts the color
+    filter: currentTheme.accent
   }
 
   const welcomeMessage = {
@@ -66,11 +68,11 @@ function App() {
     blog: <Blog />,
     gen: "Usage: gen [prompt]",
     imagine: "Usage: imagine [prompt]",
+    games: "Usage: games [game-name]",
   };
 
   const handleImagineCommand = (args: string) => {
     const [subCommand, ...promt] = args.split(' ');
-
     const mainPromt = promt.join(' ');
 
     if (mainPromt.length !== 0 && subCommand === 'imagine') {
@@ -83,13 +85,7 @@ function App() {
 
   const handleGenCommand = (args: string) => {
     const [subCommand, ...promt] = args.split(' ');
-
     const mainPromt = promt.join(' ');
-
-    // console.log(`subCommand: ${subCommand}, mainPromt: ${mainPromt}, length: ${mainPromt.length} \n`);
-    // console.log('subCommand === gen: ', subCommand === 'gen','\n');
-    // console.log('mainPromt.length === 0: ', mainPromt.length == 0, '\n');
-    // console.log('mainPromt.length === 0 && subCommand === gen: ', mainPromt.length === 0 && subCommand === 'gen');
 
     if (mainPromt.length !== 0 && subCommand === 'gen') {
       console.log('mainPromt: ', mainPromt);
@@ -97,7 +93,19 @@ function App() {
     }
 
     return 'Usage: gen [prompt]';
+  };
 
+  const handleGamesCommand = (args: string) => {
+    const argArray = args.trim().split(' ').filter(Boolean);
+    
+    return (
+      <Games 
+        currentTheme={currentTheme} 
+        args={argArray}
+        onGameCommand={(callback: (input: string) => void) => setGameCommandHandler(() => callback)}
+        restoreCommand={() => setGameCommandHandler(null)}
+      />
+    );
   };
 
   useEffect(() => {
@@ -109,10 +117,8 @@ function App() {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [history]);
 
-
   const handleThemeCommand = (args: string) => {
     const [subCommand, themeName] = args.split(' ');
-    // console.log(`subCommand: ${subCommand}, themeName: ${themeName}`);
 
     if (subCommand === 'list') {
       return (
@@ -149,24 +155,23 @@ function App() {
 
     if (trimmedCmd === 'clear') {
       setHistory([welcomeMessage]);
+      setGameCommandHandler(null);
       return;
     }
 
     if (trimmedCmd.startsWith('imagine')) {
       output = handleImagineCommand(trimmedCmd);
-    }
-
-    if (trimmedCmd.startsWith('gen')) {
+    } else if (trimmedCmd.startsWith('gen')) {
       output = handleGenCommand(trimmedCmd);
-    }
-
-    if (trimmedCmd.startsWith('theme')) {
+    } else if (trimmedCmd.startsWith('games')) {
+      const args = trimmedCmd.slice(5).trim();
+      output = handleGamesCommand(args);
+    } else if (trimmedCmd.startsWith('theme')) {
       const args = trimmedCmd.slice(6);
       output = handleThemeCommand(args);
     } else if (trimmedCmd in commands) {
       output = commands[trimmedCmd as keyof typeof commands];
     }
-
 
     setHistory((prev) => [...prev, { command: cmd, output }]);
   };
@@ -174,7 +179,12 @@ function App() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (input.trim()) {
-      handleCommand(input);
+      // If a game is active, pass input to game handler
+      if (gameCommandHandler) {
+        gameCommandHandler(input);
+      } else {
+        handleCommand(input);
+      }
       setInput('');
     }
   };

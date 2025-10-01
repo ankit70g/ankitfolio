@@ -13,6 +13,10 @@ const Help = () => (
       <li>{'>'} help - Show this help message</li>
       <li>{'>'} quote -  Get a random quote for inspiration</li>
       <li>{'>'} blog - Read my latest thoughts and articles</li>
+      <li>
+        {'>'} games – Play terminal games (try: <code>games tictactoe</code>, <code>games guess</code>, <code>games rps</code>)
+      </li>
+      {/* <li>{'>'} games - Discover and play interactive terminal games (rps, guess, snake)</li> */}
       {/* <li>{'>'} gen - Generate content based on prompt (try: gen [prompt])</li>
       <li>{'>'} imagine - Generate an image based on prompt (try: imagine [prompt])</li> */}
     </ul>

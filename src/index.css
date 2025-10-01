@@ -76,3 +76,15 @@ body {
   opacity: 1;
   visibility: visible;
 }
+
+.cmd-output {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  white-space: pre-line;
+  margin: 0;
+  padding: 0;
+}
+.cmd-output code {
+  font-size: 14px;
+  line-height: 1.4;
+}
