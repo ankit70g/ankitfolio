@@ -13,8 +13,9 @@ const Help = () => (
       <li>{'>'} help - Show this help message</li>
       <li>{'>'} quote -  Get a random quote for inspiration</li>
       <li>{'>'} blog - Read my latest thoughts and articles</li>
+      {/* <li>{'>'} joke - Get a random joke from Gemini AI</li> */}
       <li>
-        {'>'} games – Play terminal games (try: <code>games tictactoe</code>, <code>games guess</code>, <code>games rps</code>)
+        {'>'} games - Play terminal games (try: <code>games tictactoe</code>, <code>games guess</code>, <code>games rps</code>)
       </li>
       {/* <li>{'>'} games - Discover and play interactive terminal games (rps, guess, snake)</li> */}
       {/* <li>{'>'} gen - Generate content based on prompt (try: gen [prompt])</li>

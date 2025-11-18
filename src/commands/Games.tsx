@@ -612,7 +612,7 @@ const RockPaperScissors: React.FC<{
             if (newPlayerScore > newAiScore) {
                 finalResult = `🏆 YOU WIN THE GAME!\n\nFinal Score - You: ${newPlayerScore} | AI: ${newAiScore}\nWell played, champion!`;
             } else if (newAiScore > newPlayerScore) {
-                finalResult = `💀 AI WINS THE GAME!\n\nFinal Score - You: ${newPlayerScore} | AI: ${newAiScore}\nBetter luck next time!`;
+                finalResult = `🤖 AI WINS THE GAME!\n\nFinal Score - You: ${newPlayerScore} | AI: ${newAiScore}\nBetter luck next time!`;
             } else {
                 finalResult = `🤝 IT'S A TIE!\n\nFinal Score - You: ${newPlayerScore} | AI: ${newAiScore}\nEvenly matched!`;
             }

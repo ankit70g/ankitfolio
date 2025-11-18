@@ -62,7 +62,7 @@ function App() {
     help: <Help />,
     about: <About />,
     skills: <Skills />,
-    projects: <Projects currentTheme={currentTheme} />,
+    projects: <Projects />,
     contact: <Contact />,
     quote: <Quote />,
     blog: <Blog />,
@@ -97,10 +97,10 @@ function App() {
 
   const handleGamesCommand = (args: string) => {
     const argArray = args.trim().split(' ').filter(Boolean);
-    
+
     return (
-      <Games 
-        currentTheme={currentTheme} 
+      <Games
+        currentTheme={currentTheme}
         args={argArray}
         onGameCommand={(callback: (input: string) => void) => setGameCommandHandler(() => callback)}
         restoreCommand={() => setGameCommandHandler(null)}
